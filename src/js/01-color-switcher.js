@@ -24,5 +24,3 @@ stop.addEventListener('click', () => {
   stop.disabled = true;
   start.disabled = false;
 });
-const date = new Date();
-console.log(date)
