@@ -8,19 +8,17 @@ function getRandomHexColor() {
 
 stop.disabled = true;
 
-  start.addEventListener("click", () => {
+  start.addEventListener("click", (timerId) => {
     stop.disabled=false;
     start.disabled=true;
-    timerId = setInterval(() => {
-     const color = getRandomHexColor();
-     body.style.backgroundColor = color;
-    }, 1000);
   });
-
+  const timerId = setInterval(() => {
+    const color = getRandomHexColor();
+    body.style.backgroundColor = color;
+   }, 1000);
 
 stop.addEventListener('click', () => {
   clearInterval(timerId);
-  intervalId = null;
   stop.disabled = true;
   start.disabled = false;
 });
