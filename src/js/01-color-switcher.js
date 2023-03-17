@@ -1,12 +1,12 @@
 const start = document.querySelector('[data-start]');
 const stop = document.querySelector('[data-stop]');
 const body = document.getElementsByTagName('body')[0];
+let timerId; // добавляем объявление переменной timerId
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-let timerId;
 stop.disabled = true;
 
 start.addEventListener("click", () => {
