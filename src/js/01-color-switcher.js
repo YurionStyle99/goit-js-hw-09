@@ -20,6 +20,7 @@ function startColorChange() {
 function stopColorChange() {
   clearInterval(intervalId);
   startBtn.disabled = false;
+  stopBtn.disabled = true;
 }
 
 startBtn.addEventListener('click', startColorChange);
