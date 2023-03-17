@@ -1,33 +1,23 @@
-const start = document.querySelector('[data-start]');
-const stop = document.querySelector('[data-stop]');
-const body = document.getElementsByTagName('body')[0];
-let timerId; // добавляем объявление переменной timerId
-
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 }
 
-stop.disabled = true;
+let intervalId;
+const body = document.body;
+const startBtn = document.querySelector('[data-start]');
+const stopBtn = document.querySelector('[data-stop]');
 
-start.addEventListener("click", () => {
-  stop.disabled=false;
-  start.disabled=true;
-  startInterval()
-});
-
-function startInterval() {
-  timerId = setInterval(() => {
-    const color = getRandomHexColor();
-    body.style.backgroundColor = color;
+function startColorChange() {
+  startBtn.disabled = true; // деактивируем кнопку "Start"
+  intervalId = setInterval(() => {
+    body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
 
-function stopInterval() {
-  clearInterval(timerId);
+function stopColorChange() {
+  clearInterval(intervalId); // останавливаем изменение цвета фона
+  startBtn.disabled = false; // активируем кнопку "Start"
 }
 
-stop.addEventListener('click', () => {
-  stopInterval();
-  stop.disabled = true;
-  start.disabled = false;
-});
+startBtn.addEventListener('click', startColorChange);
+stopBtn.addEventListener('click', stopColorChange);
