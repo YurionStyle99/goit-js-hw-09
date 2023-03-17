@@ -14,13 +14,13 @@ stop.disabled = true;
     startInterval()
   });
   function startInterval() {
-    timerId = setInterval(() => {
+     setInterval(() => {
       const color = getRandomHexColor();
       body.style.backgroundColor = color;
     }, 1000);
   }
     function stopInterval() {
-      clearInterval(timerId);
+      clearInterval();
     }
 stop.addEventListener('click', () => {
   stopInterval();
