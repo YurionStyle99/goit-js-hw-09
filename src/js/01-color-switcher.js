@@ -5,7 +5,7 @@ const body = document.getElementsByTagName('body')[0];
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-let timetId;
+let timerId;
 stop.disabled = true;
 
   start.addEventListener("click", () => {
