@@ -11,12 +11,14 @@ stop.disabled = true;
   start.addEventListener("click", () => {
     stop.disabled=false;
     start.disabled=true;
-    
+    startInterval()
   });
-const timerId = setInterval(() => {
-     const color = getRandomHexColor();
-     body.style.backgroundColor = color;
+  function startInterval() {
+    timerId = setInterval(() => {
+      const color = getRandomHexColor();
+      body.style.backgroundColor = color;
     }, 1000);
+  }
     function stopInterval() {
       clearInterval(timerId);
     }
