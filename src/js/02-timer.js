@@ -20,25 +20,21 @@ const datePick = flatpickr("#datetime-picker", {
   onClose(selectedDates) {
     const selectedDate = selectedDates[0];
     const now = Date.now();
-    const targetDate= selectedDate - now;
+    const targetDate = selectedDate - now;
 
     if (targetDate <= 0) {
       Report.failure(
         'Eror',
         'Choose date in future',
         'Got it'
-        );
-      return;
+      );
     }
-
-    countdownIntervalId = setInterval(updateCountdown, 1000);
   },
 });
 
 startButton.addEventListener("click", () => {
   updateCountdown();
 });
-
 
 function updateCountdown() {
   const now = Date.now();
@@ -53,11 +49,13 @@ function updateCountdown() {
     timerFields.seconds.textContent = "00";
     return;
   }
-function pad(value){
-  return String(value).padStart(2, "0")
-}
-  const daysValue = Math.floor(targetDate / ((60000 * 60)* 24));
-  const hoursValue = pad(Math.floor((targetDate % ((60000 * 60)* 24)) / (60000 * 60)));
+
+  function pad(value) {
+    return String(value).padStart(2, "0");
+  }
+
+  const daysValue = Math.floor(targetDate / ((60000 * 60) * 24));
+  const hoursValue = pad(Math.floor((targetDate % ((60000 * 60) * 24)) / (60000 * 60)));
   const minutesValue = pad(Math.floor((targetDate % (60000 * 60)) / (1000 * 60)));
   const secondsValue = pad(Math.floor((targetDate % (1000 * 60)) / 1000));
 
@@ -66,5 +64,3 @@ function pad(value){
   timerFields.minutes.textContent = minutesValue;
   timerFields.seconds.textContent = secondsValue;
 }
-
-
