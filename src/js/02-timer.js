@@ -33,7 +33,8 @@ const datePick = flatpickr("#datetime-picker", {
 });
 
 startButton.addEventListener("click", () => {
-  updateCountdown();
+  clearInterval(countdownIntervalId);
+  countdownIntervalId = setInterval(updateCountdown, 1000);
 });
 
 function updateCountdown() {
@@ -54,7 +55,7 @@ function updateCountdown() {
     return String(value).padStart(2, "0");
   }
 
-  const daysValue = Math.floor(targetDate / ((60000 * 60) * 24));
+  const daysValue = pad(Math.floor(targetDate / ((60000 * 60) * 24)));
   const hoursValue = pad(Math.floor((targetDate % ((60000 * 60) * 24)) / (60000 * 60)));
   const minutesValue = pad(Math.floor((targetDate % (60000 * 60)) / (1000 * 60)));
   const secondsValue = pad(Math.floor((targetDate % (1000 * 60)) / 1000));
